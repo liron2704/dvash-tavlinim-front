@@ -1,0 +1,19 @@
+.hero {
+    position: relative;
+    height: 737px;
+    width: 100%;
+    background-image: url('../assets/login_bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+form {
+    position: absolute;
+    left: 50%; /* Adjust as needed */
+    transform: translateX(-50%);
+    width: 54%;
+    background-color: white;
+    padding: 50px;
+    border-radius: 20px;
+}
+
