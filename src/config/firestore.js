@@ -2,6 +2,11 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -15,19 +20,28 @@ const firebaseConfig = {
   storageBucket: "dvashtavlinim.appspot.com",
   messagingSenderId: "592852568207",
   appId: "1:592852568207:web:cb08530236e5370a9048fa",
-  measurementId: "G-305J2QDZ1J"
+  measurementId: "G-305J2QDZ1J",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
 const storage = getStorage(app);
 
-export const productsCollection =  collection(db, "products");
+const auth = getAuth(app);
+
+export {
+  db,
+  storage,
+  auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+};
+export const productsCollection = collection(db, "products");
+export const usersCollection = collection(db, "users");
 
 export const getDocuments = async (collec) => {
   try {
@@ -37,4 +51,4 @@ export const getDocuments = async (collec) => {
     console.error("Error getting documents: ", error);
     throw error; // Re-throw the error to handle it in the calling component
   }
-}
+};
